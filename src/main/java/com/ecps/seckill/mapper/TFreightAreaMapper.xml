@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ecps.seckill.mapper.TFreightAreaMapper" >
+  <resultMap id="BaseResultMap" type="com.ecps.seckill.pojo.TFreightArea" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="f_templetid" property="fTempletid" jdbcType="INTEGER" />
+    <result column="pid" property="pid" jdbcType="VARCHAR" />
+    <result column="p" property="p" jdbcType="VARCHAR" />
+    <result column="firstcount" property="firstcount" jdbcType="INTEGER" />
+    <result column="first_freight" property="firstFreight" jdbcType="DOUBLE" />
+    <result column="continuation" property="continuation" jdbcType="INTEGER" />
+    <result column="continue_freight" property="continueFreight" jdbcType="DOUBLE" />
+    <result column="creater" property="creater" jdbcType="INTEGER" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+
+  <sql id="Base_Column_List" >
+    id, f_templetid, pid, p, firstcount, first_freight, continuation, continue_freight, 
+    creater, createtime
+  </sql>
+
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_freight_area
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_freight_area
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="com.ecps.seckill.pojo.TFreightArea" >
+    insert into t_freight_area (id, f_templetid, pid, 
+      p, firstcount, first_freight, 
+      continuation, continue_freight, creater, 
+      createtime)
+    values (#{id,jdbcType=INTEGER}, #{fTempletid,jdbcType=INTEGER}, #{pid,jdbcType=VARCHAR}, 
+      #{p,jdbcType=VARCHAR}, #{firstcount,jdbcType=INTEGER}, #{firstFreight,jdbcType=DOUBLE}, 
+      #{continuation,jdbcType=INTEGER}, #{continueFreight,jdbcType=DOUBLE}, #{creater,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ecps.seckill.pojo.TFreightArea" >
+    insert into t_freight_area
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="fTempletid != null" >
+        f_templetid,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="p != null" >
+        p,
+      </if>
+      <if test="firstcount != null" >
+        firstcount,
+      </if>
+      <if test="firstFreight != null" >
+        first_freight,
+      </if>
+      <if test="continuation != null" >
+        continuation,
+      </if>
+      <if test="continueFreight != null" >
+        continue_freight,
+      </if>
+      <if test="creater != null" >
+        creater,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="fTempletid != null" >
+        #{fTempletid,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="p != null" >
+        #{p,jdbcType=VARCHAR},
+      </if>
+      <if test="firstcount != null" >
+        #{firstcount,jdbcType=INTEGER},
+      </if>
+      <if test="firstFreight != null" >
+        #{firstFreight,jdbcType=DOUBLE},
+      </if>
+      <if test="continuation != null" >
+        #{continuation,jdbcType=INTEGER},
+      </if>
+      <if test="continueFreight != null" >
+        #{continueFreight,jdbcType=DOUBLE},
+      </if>
+      <if test="creater != null" >
+        #{creater,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.ecps.seckill.pojo.TFreightArea" >
+    update t_freight_area
+    <set >
+      <if test="fTempletid != null" >
+        f_templetid = #{fTempletid,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="p != null" >
+        p = #{p,jdbcType=VARCHAR},
+      </if>
+      <if test="firstcount != null" >
+        firstcount = #{firstcount,jdbcType=INTEGER},
+      </if>
+      <if test="firstFreight != null" >
+        first_freight = #{firstFreight,jdbcType=DOUBLE},
+      </if>
+      <if test="continuation != null" >
+        continuation = #{continuation,jdbcType=INTEGER},
+      </if>
+      <if test="continueFreight != null" >
+        continue_freight = #{continueFreight,jdbcType=DOUBLE},
+      </if>
+      <if test="creater != null" >
+        creater = #{creater,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ecps.seckill.pojo.TFreightArea" >
+    update t_freight_area
+    set f_templetid = #{fTempletid,jdbcType=INTEGER},
+      pid = #{pid,jdbcType=VARCHAR},
+      p = #{p,jdbcType=VARCHAR},
+      firstcount = #{firstcount,jdbcType=INTEGER},
+      first_freight = #{firstFreight,jdbcType=DOUBLE},
+      continuation = #{continuation,jdbcType=INTEGER},
+      continue_freight = #{continueFreight,jdbcType=DOUBLE},
+      creater = #{creater,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
